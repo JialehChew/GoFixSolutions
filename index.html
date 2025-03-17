@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Go Fix Solution - Professional Phone Repair Services</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+screens: {
+'sm': '640px',
+'md': '768px',
+'lg': '1024px',
+'xl': '1280px',
+'2xl': '1536px'
+},
+extend: {
+colors: {
+primary: '#0284c7',
+secondary: '#f97316'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.testimonial-slider {
+transition: transform 0.5s ease;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+<nav class="container mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<a href="#" class="text-3xl font-['Pacifico'] text-primary">Go Fix Solution</a>
+<div class="hidden md:flex items-center space-x-8">
+<a href="#services" class="text-gray-700 hover:text-primary">Services</a>
+<a href="#accessories" class="text-gray-700 hover:text-primary">Accessories</a>
+<a href="#testimonials" class="text-gray-700 hover:text-primary">Testimonials</a>
+<a href="#contact" class="text-gray-700 hover:text-primary">Contact</a>
+<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90" onclick="window.location.href='tel:019-288 8012'">Call Us Now</button>
+<div class="relative">
+<button onclick="toggleLanguage()" class="flex items-center space-x-1 text-gray-700 hover:text-primary">
+<span id="currentLang">EN</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+<div id="languageMenu" class="hidden absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg py-2 w-24">
+<button onclick="changeLang('en')" class="w-full px-4 py-2 text-left hover:bg-gray-100">English</button>
+<button onclick="changeLang('my')" class="w-full px-4 py-2 text-left hover:bg-gray-100">Bahasa</button>
+</div>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="text-gray-700 p-2" onclick="toggleMobileMenu()">
+<i class="ri-menu-line text-2xl"></i>
+</button>
+</div>
+</div>
+</nav>
+</header>
+<div class="mobile-menu hidden fixed top-16 left-0 right-0 bottom-0 bg-white shadow-lg z-40 md:hidden overflow-y-auto">
+<div class="container mx-auto px-6 py-4">
+<div class="flex flex-col space-y-6">
+<div class="flex items-center justify-between pb-4 border-b">
+<span class="text-lg font-semibold text-gray-900">Menu</span>
+<button class="text-gray-500 p-2" onclick="toggleMobileMenu()">
+<i class="ri-close-line text-2xl"></i>
+</button>
+</div>
+<a href="#services" class="flex items-center text-gray-700 hover:text-primary py-2">
+<i class="ri-tools-line mr-3 text-xl"></i>
+<span>Services</span>
+</a>
+<a href="#accessories" class="flex items-center text-gray-700 hover:text-primary py-2">
+<i class="ri-shopping-bag-line mr-3 text-xl"></i>
+<span>Accessories</span>
+</a>
+<a href="#testimonials" class="flex items-center text-gray-700 hover:text-primary py-2">
+<i class="ri-chat-quote-line mr-3 text-xl"></i>
+<span>Testimonials</span>
+</a>
+<a href="#contact" class="flex items-center text-gray-700 hover:text-primary py-2">
+<i class="ri-map-pin-line mr-3 text-xl"></i>
+<span>Contact</span>
+</a>
+<button class="bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 flex items-center justify-center" onclick="window.location.href='tel:019-288 8012'">
+<i class="ri-phone-line mr-2"></i>
+Call Us Now
+</button>
+<div class="flex flex-col space-y-4 pt-4 border-t">
+<div class="text-lg font-semibold text-gray-900">Language</div>
+<div class="flex items-center space-x-4">
+<button onclick="changeLang('en')" class="flex-1 py-2 px-4 border !rounded-button text-gray-700 hover:text-primary hover:border-primary">English</button>
+<button onclick="changeLang('my')" class="flex-1 py-2 px-4 border !rounded-button text-gray-700 hover:text-primary hover:border-primary">Bahasa</button>
+</div>
+</div>
+<div class="flex flex-col space-y-4 pt-4 border-t">
+<div class="text-lg font-semibold text-gray-900">Follow Us</div>
+<div class="flex items-center space-x-6">
+<a href="https://www.facebook.com/share/15B6ArnCBe/?mibextid=wwXIfr" class="text-gray-600 hover:text-primary">
+<i class="ri-facebook-fill text-2xl"></i>
+</a>
+<a href="https://www.instagram.com/gofixsolution?igsh=MTEyZmJocXdjYWVhYQ%3D%3D&utm_source=qr" class="text-gray-600 hover:text-primary">
+<i class="ri-instagram-fill text-2xl"></i>
+</a>
+<a href="https://www.tiktok.com/@gofixphonerepairing?_t=ZM-8uePCq0VXpV&_r=1" class="text-gray-600 hover:text-primary">
+<i class="ri-tiktok-fill text-2xl"></i>
+</a>
+<a href="https://linktr.ee/gofixsolution" class="text-gray-600 hover:text-primary">
+<i class="ri-whatsapp-line text-2xl"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<main class="pt-16">
+<section class="relative h-[600px] md:h-[600px] bg-cover bg-center" style="background-image: url('https://public.readdy.ai/ai/img_res/eb3da73c98c860277537162bc5ca1463.jpg')">
+<div class="absolute inset-0 bg-gradient-to-r from-white/90 to-white/30"></div>
+<div class="container mx-auto px-6 h-full flex items-center relative">
+<div class="max-w-2xl">
+<h1 class="text-5xl font-bold text-gray-900 mb-6" data-translate="heroTitle">Professional Phone Repair Services</h1>
+<p class="text-xl text-gray-700 mb-8" data-translate="heroDesc">Expert repairs with free diagnosis. Get your device fixed by experienced technicians with proven track record.</p>
+<div class="flex items-center space-x-6 mb-8">
+<button class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90 text-lg" onclick="openBookingModal()" data-translate="freeChecking">Free Checking</button>
+<div class="flex items-center space-x-2">
+<i class="ri-phone-fill text-2xl text-primary"></i>
+<span class="text-lg font-semibold text-gray-900">019-288 8012</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+<div class="text-center">
+<div class="text-3xl font-bold text-gray-900 mb-2">10+</div>
+<div class="text-gray-600" data-translate="yearsExp">Years Experience</div>
+</div>
+<div class="text-center">
+<div class="text-3xl font-bold text-gray-900 mb-2">20,000+</div>
+<div class="text-gray-600" data-translate="satisfiedCustomers">Satisfied Customers</div>
+</div>
+<div class="text-center">
+<div class="text-3xl font-bold text-gray-900 mb-2">25,000+</div>
+<div class="text-gray-600" data-translate="repairedDevices">Repaired Devices</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="services" class="py-20 bg-white">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-center text-gray-900 mb-12" data-translate="ourServices">Our Services</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-smartphone-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Screen Repair</h3>
+<p class="text-gray-600" data-translate="screenRepairDesc">Professional LCD replacement service with genuine parts and warranty coverage.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-battery-2-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="batteryReplacement">Battery Replacement</h3>
+<p class="text-gray-600" data-translate="batteryDesc">Restore your phone's battery life with high-quality replacement batteries.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-water-flash-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="waterDamage">Water Damage Repair</h3>
+<p class="text-gray-600" data-translate="waterDamageDesc">Specialized treatment for water-damaged devices with high success rate.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-camera-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="cameraRepair">Camera Repair</h3>
+<p class="text-gray-600" data-translate="cameraRepairDesc">Expert camera module replacement and repair for crystal clear photos.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-volume-up-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="speakerRepair">Speaker Repair</h3>
+<p class="text-gray-600" data-translate="speakerRepairDesc">Fix audio issues with professional speaker and microphone repairs.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-code-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="softwareSolutions">Software Solutions</h3>
+<p class="text-gray-600" data-translate="softwareDesc">System updates, data recovery, and software troubleshooting services.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-settings-5-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="formatPhone">Format Phone</h3>
+<p class="text-gray-600" data-translate="formatPhoneDesc">Professional phone formatting service to restore your device to factory settings.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-lock-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="phoneLock">Phone Lock</h3>
+<p class="text-gray-600" data-translate="phoneLockDesc">Unlock your phone or fix lock-related issues with our expert services.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-toggle-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="buttonProblem">Button On/Off & Volume Problem</h3>
+<p class="text-gray-600" data-translate="buttonProblemDesc">Fix issues with power buttons, volume buttons, and other hardware problems.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-battery-charge-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="chargingBoard">Charging Board</h3>
+<p class="text-gray-600" data-translate="chargingBoardDesc">Repair or replace faulty charging boards to restore charging functionality.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-plug-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="pinCharge">Pin Charge</h3>
+<p class="text-gray-600" data-translate="pinChargeDesc">Fix issues with charging pins and connectors for reliable charging.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-glass-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="backglassBroken">Backglass Broken</h3>
+<p class="text-gray-600" data-translate="backglassBrokenDesc">Replace broken back glass to restore your phone's appearance and protection.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-signal-wifi-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="lineProblem">Line Problem</h3>
+<p class="text-gray-600" data-translate="lineProblemDesc">Fix network and signal issues for better connectivity.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="accessories" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-center text-gray-900 mb-12" data-translate="accessories">Accessories</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-usb-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="allTypeCable">All Type Cable</h3>
+<p class="text-gray-600" data-translate="allTypeCableDesc">High-quality cables for charging and data transfer.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-battery-2-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="powerbank">Powerbank</h3>
+<p class="text-gray-600" data-translate="powerbankDesc">Portable power banks to keep your devices charged on the go.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-headphone-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="earphone">Earphone</h3>
+<p class="text-gray-600" data-translate="earphoneDesc">High-quality earphones for an immersive audio experience.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-smartphone-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="phoneHolder">Phone Holder</h3>
+<p class="text-gray-600" data-translate="phoneHolderDesc">Sturdy phone holders for convenient use in cars and homes.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-plug-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="adapter">Adapter</h3>
+<p class="text-gray-600" data-translate="adapterDesc">Compatible adapters for various devices.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-shield-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="temperedGlass">Tempered Glass</h3>
+<p class="text-gray-600" data-translate="temperedGlassDesc">Durable tempered glass screen protectors for your devices.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+<i class="ri-phone-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="casingPhone">Casing Phone</h3>
+<p class="text-gray-600" data-translate="casingPhoneDesc">Stylish and protective phone cases for various models.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="testimonials" class="py-20 bg-white">
+<div class="container mx-auto px-6 max-w-7xl">
+<h2 class="text-3xl font-bold text-center text-gray-900 mb-12" data-translate="customerSay">What Our Customers Say</h2>
+<div class="relative">
+<div class="overflow-hidden px-12">
+<div class="testimonial-slider flex transition-transform duration-500 ease-in-out">
+<div class="min-w-[400px] mx-4">
+<div class="bg-white p-6 rounded-lg shadow-lg">
+<div class="flex items-center mb-4">
+<img src="https://public.readdy.ai/ai/img_res/176239a8b7a5883f1f0205a04862af8e.jpg" class="w-12 h-12 rounded-full" alt="Customer 1">
+<div class="ml-4">
+<h4 class="font-semibold text-gray-900">Nurul Aisyah</h4>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-600">"Skrin telefon saya pecah teruk, takut nak guna. Nasib baik hantar sini, terus jadi macam baru. Servis pantas, harga berpatutan. Confirm recommend kat kawan-kawan!"</p>
+</div>
+</div>
+<div class="min-w-[400px] mx-4">
+<div class="bg-white p-6 rounded-lg shadow-lg">
+<div class="flex items-center mb-4">
+<img src="https://public.readdy.ai/ai/img_res/f28f5e18ed63826df841b9e7ceb44915.jpg" class="w-12 h-12 rounded-full" alt="Customer 2">
+<div class="ml-4">
+<h4 class="font-semibold text-gray-900">Ahmad Faiz</h4>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-600">"Gambar sebelum ni kabur, susah nak ambil foto yang jelas. Lepas repair, kamera jadi sharp balik macam baru! Memang puas hati dengan servis di sini. Terima kasih banyak!"</p>
+</div>
+</div>
+<div class="min-w-[400px] mx-4">
+<div class="bg-white p-6 rounded-lg shadow-lg">
+<div class="flex items-center mb-4">
+<img src="https://public.readdy.ai/ai/img_res/1007fa9d5445bd4e99ee1f683e51fc5e.jpg" class="w-12 h-12 rounded-full" alt="Customer 3">
+<div class="ml-4">
+<h4 class="font-semibold text-gray-900">Sarah Tan</h4>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-600">"Staff sangat peramah, siap bagi tips untuk jaga bateri supaya tahan lebih lama. Harga pun berbaloi dengan servis yang bagus. Kalau ada masalah lain, confirm datang sini lagi!"</p>
+</div>
+</div>
+</div>
+</div>
+<button class="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg" onclick="slideTestimonials('prev')">
+<i class="ri-arrow-left-s-line text-2xl text-gray-600"></i>
+</button>
+<button class="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg" onclick="slideTestimonials('next')">
+<i class="ri-arrow-right-s-line text-2xl text-gray-600"></i>
+</button>
+</div>
+</div>
+</section>
+<section id="contact" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <!-- Visit Our Store Section -->
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-6" data-translate="visitStore">Visit Our Store</h2>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden h-[400px]">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.8876023583087!2d101.42645631475503!3d2.8675899978905237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb43b3c8c8c8f%3A0x74f548c9f5a1a0a9!2sSegi%20Fresh%20Telok%20Panglima%20Garang!5e0!3m2!1sen!2smy!4v1717601234567!5m2!1sen!2smy" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Contact Information Section -->
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-6" data-translate="contactInfo">Contact Information</h2>
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <div class="space-y-6">
+            <!-- Shop Image -->
+            <div class="mb-6">
+              <img src="images/shop_front.jpg" 
+                   alt="Our Shop" 
+                   class="w-full h-48 object-cover rounded-lg mb-4">
+            </div>
+
+            <!-- Address -->
+            <div class="flex items-center">
+              <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full">
+                <i class="ri-map-pin-line text-xl text-primary"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-semibold text-gray-900" data-translate="address">Address</h4>
+                <p class="text-gray-600">(Segi Fresh Telok panglima garang) Lot No A2 & A3, No.6, JALAN GANGSA, KAWASAN PERINDUSTRIAN TELOK PANGLIMA GARANG, 42500, TELOK PANGLIMA GARANG, SELANGOR, MALAYSIA</p>
+              </div>
+            </div>
+
+            <!-- Working Hours -->
+            <div class="flex items-center">
+              <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full">
+                <i class="ri-time-line text-xl text-primary"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-semibold text-gray-900" data-translate="workingHours">Working Hours</h4>
+                <p class="text-gray-600">Mon-Sun: 9:30 AM - 8:30 PM</p>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="flex items-center">
+              <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full">
+                <i class="ri-phone-line text-xl text-primary"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-semibold text-gray-900">Phone</h4>
+                <p class="text-gray-600">019-288 8012</p>
+              </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="flex items-center">
+              <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full">
+                <i class="ri-share-line text-xl text-primary"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-semibold text-gray-900">Social Media</h4>
+                <div class="flex space-x-4 mt-2">
+                  <a href="https://www.facebook.com/share/15B6ArnCBe/?mibextid=wwXIfr" class="text-gray-600 hover:text-primary">
+                    <i class="ri-facebook-fill text-2xl"></i>
+                  </a>
+                  <a href="https://www.instagram.com/gofixsolution?igsh=MTEyZmJocXdjYWVhYQ%3D%3D&utm_source=qr" class="text-gray-600 hover:text-primary">
+                    <i class="ri-instagram-fill text-2xl"></i>
+                  </a>
+                  <a href="https://www.tiktok.com/@gofixphonerepairing?_t=ZM-8uePCq0VXpV&_r=1" class="text-gray-600 hover:text-primary">
+                    <i class="ri-tiktok-fill text-2xl"></i>
+                  </a>
+                  <a href="https://linktr.ee/gofixsolution" class="text-gray-600 hover:text-primary">
+                    <i class="ri-whatsapp-line text-2xl"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+<div>
+<h3 class="text-2xl font-['Pacifico'] mb-6">Go Fix Solution</h3>
+<p class="text-gray-400">Professional phone repair services with guaranteed satisfaction.</p>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6" data-translate="quickLinks">Quick Links</h4>
+<ul class="space-y-3">
+<li><a href="#services" class="text-gray-400 hover:text-white">Services</a></li>
+<li><a href="#accessories" class="text-gray-400 hover:text-white">Accessories</a></li>
+<li><a href="#testimonials" class="text-gray-400 hover:text-white">Testimonials</a></li>
+<li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Services</h4>
+<ul class="space-y-3">
+<li class="text-gray-400">Screen Repair</li>
+<li class="text-gray-400">Battery Replacement</li>
+<li class="text-gray-400">Water Damage Repair</li>
+<li class="text-gray-400">Camera Repair</li>
+<li class="text-gray-400">Speaker Repair</li>
+<li class="text-gray-400">Software Solutions</li>
+<li class="text-gray-400">Format Phone</li>
+<li class="text-gray-400">Phone Lock</li>
+<li class="text-gray-400">Button On/Off & Volume Problem</li>
+<li class="text-gray-400">Charging Board</li>
+<li class="text-gray-400">Pin Charge</li>
+<li class="text-gray-400">Backglass Broken</li>
+<li class="text-gray-400">Line Problem</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Accessories</h4>
+<ul class="space-y-3">
+<li class="text-gray-400">All Type Cable</li>
+<li class="text-gray-400">Powerbank</li>
+<li class="text-gray-400">Earphone</li>
+<li class="text-gray-400">Phone Holder</li>
+<li class="text-gray-400">Adapter</li>
+<li class="text-gray-400">Tempered Glass</li>
+<li class="text-gray-400">Casing Phone</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+<p data-translate="copyright">&copy; 2025 Go Fix Solution. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<div class="fixed bottom-20 md:bottom-6 right-8 md:right-12 flex flex-col space-y-3 md:space-y-4">
+<a href="https://wa.me/0192888012" target="_blank" class="bg-green-500 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-green-600">
+<i class="ri-whatsapp-line text-2xl"></i>
+</a>
+<button id="backToTop" class="bg-gray-900 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-800 hidden">
+<i class="ri-arrow-up-line text-2xl"></i>
+</button>
+</div>
+<div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+<div class="bg-white rounded-lg p-6 md:p-8 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-2xl font-bold text-gray-900">Book a Repair</h3>
+<button onclick="closeBookingModal()" class="text-gray-500 hover:text-gray-700">
+<i class="ri-close-line text-2xl"></i>
+</button>
+</div>
+<form id="bookingForm" class="space-y-6">
+<div>
+<label class="block text-gray-700 mb-2">Name</label>
+<input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">Phone</label>
+<input type="tel" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">Service Type</label>
+<select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+<option value="">Select a service</option>
+<option value="screen">Screen Repair</option>
+<option value="battery">Battery Replacement</option>
+<option value="water">Water Damage</option>
+<option value="camera">Camera Repair</option>
+<option value="speaker">Speaker Repair</option>
+<option value="software">Software Solutions</option>
+<option value="format">Format Phone</option>
+<option value="lock">Phone Lock</option>
+<option value="button">Button On/Off & Volume Problem</option>
+<option value="charging">Charging Board</option>
+<option value="pin">Pin Charge</option>
+<option value="backglass">Backglass Broken</option>
+<option value="line">Line Problem</option>
+</select>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">Preferred Date</label>
+<input type="date" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-3 !rounded-button hover:bg-primary/90">Submit Booking</button>
+</form>
+</div>
+</div>
+<script>
+// Enable mobile device testing
+function enableMobilePreview() {
+const devices = {
+'iPhone SE': { width: 375, height: 667 },
+'iPhone XR': { width: 414, height: 896 },
+'iPhone 12 Pro': { width: 390, height: 844 },
+'Pixel 5': { width: 393, height: 851 },
+'Samsung Galaxy S20': { width: 412, height: 915 },
+'iPad Mini': { width: 768, height: 1024 },
+'iPad Pro': { width: 1024, height: 1366 }
+};
+const previewBar = document.createElement('div');
+previewBar.className = 'fixed top-0 left-0 right-0 bg-gray-900 text-white p-4 z-[9999] flex items-center justify-between';
+previewBar.innerHTML = `
+<div class="flex items-center space-x-4">
+<select id="deviceSelect" class="bg-gray-800 text-white px-4 py-2 rounded-lg">
+${Object.keys(devices).map(device => `<option value="${device}">${device}</option>`).join('')}
+</select>
+<button id="rotateDevice" class="bg-gray-800 px-4 py-2 rounded-lg hover:bg-gray-700">
+<i class="ri-rotate-line"></i> Rotate
+</button>
+</div>
+<button id="closePreview" class="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600">
+<i class="ri-close-line"></i> Close Preview
+</button>
+`;
+document.body.appendChild(previewBar);
+const viewport = document.createElement('div');
+viewport.className = 'fixed inset-0 bg-gray-800 z-[9998] flex items-center justify-center mt-16';
+viewport.innerHTML = `
+<div id="deviceFrame" class="bg-white overflow-hidden transition-all duration-300">
+<iframe src="${window.location.href}" class="w-full h-full border-0"></iframe>
+</div>
+`;
+document.body.appendChild(viewport);
+const deviceSelect = document.getElementById('deviceSelect');
+const deviceFrame = document.getElementById('deviceFrame');
+let isLandscape = false;
+function updateDeviceSize() {
+const device = devices[deviceSelect.value];
+const width = isLandscape ? device.height : device.width;
+const height = isLandscape ? device.width : device.height;
+deviceFrame.style.width = width + 'px';
+deviceFrame.style.height = height + 'px';
+}
+deviceSelect.addEventListener('change', updateDeviceSize);
+document.getElementById('rotateDevice').addEventListener('click', () => {
+isLandscape = !isLandscape;
+updateDeviceSize();
+});
+document.getElementById('closePreview').addEventListener('click', () => {
+previewBar.remove();
+viewport.remove();
+window.location.reload();
+});
+updateDeviceSize();
+}
+// Add preview button
+const previewButton = document.createElement('button');
+previewButton.className = 'fixed bottom-20 left-8 bg-primary text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-primary/90 z-50';
+previewButton.innerHTML = '<i class="ri-mobile-line text-2xl"></i>';
+previewButton.onclick = enableMobilePreview;
+document.body.appendChild(previewButton);
+const translations = {
+en: {
+services: "Services",
+experts: "Our Experts",
+testimonials: "Testimonials",
+contact: "Contact",
+callNow: "Call Us Now",
+bookRepair: "Book a Repair",
+name: "Name",
+phone: "Phone",
+serviceType: "Service Type",
+selectService: "Select a service",
+screenRepair: "Screen Repair",
+batteryReplacement: "Battery Replacement",
+waterDamage: "Water Damage",
+cameraRepair: "Camera Repair",
+speakerRepair: "Speaker Repair",
+softwareSolutions: "Software Solutions",
+preferredDate: "Preferred Date",
+submit: "Submit Booking",
+bookingSuccess: "Booking submitted successfully!",
+heroTitle: "Professional Phone Repair Services",
+heroDesc: "Expert repairs with free diagnosis. Get your device fixed by experienced technicians with proven track record.",
+freeChecking: "Free Checking",
+yearsExp: "Years Experience",
+satisfiedCustomers: "Satisfied Customers",
+repairedDevices: "Repaired Devices",
+ourServices: "Our Services",
+meetExperts: "Meet Our Experts",
+customerSay: "What Our Customers Say",
+visitStore: "Visit Our Store",
+contactInfo: "Contact Information",
+address: "Address",
+workingHours: "Working Hours",
+workingTime1: "Mon-Sat: 9:00 AM - 8:00 PM",
+workingTime2: "Sun: 10:00 AM - 6:00 PM",
+quickLinks: "Quick Links",
+connectUs: "Connect With Us",
+copyright: "© 2025 Go Fix Solution. All rights reserved.",
+screenRepairDesc: "Professional LCD replacement service with genuine parts and warranty coverage.",
+batteryDesc: "Restore your phone's battery life with high-quality replacement batteries.",
+waterDamageDesc: "Specialized treatment for water-damaged devices with high success rate.",
+cameraRepairDesc: "Expert camera module replacement and repair for crystal clear photos.",
+speakerRepairDesc: "Fix audio issues with professional speaker and microphone repairs.",
+softwareDesc: "System updates, data recovery, and software troubleshooting services.",
+formatPhone: "Format Phone",
+formatPhoneDesc: "Professional phone formatting service to restore your device to factory settings.",
+phoneLock: "Phone Lock",
+phoneLockDesc: "Unlock your phone or fix lock-related issues with our expert services.",
+buttonProblem: "Button On/Off & Volume Problem",
+buttonProblemDesc: "Fix issues with power buttons, volume buttons, and other hardware problems.",
+chargingBoard: "Charging Board",
+chargingBoardDesc: "Repair or replace faulty charging boards to restore charging functionality.",
+pinCharge: "Pin Charge",
+pinChargeDesc: "Fix issues with charging pins and connectors for reliable charging.",
+backglassBroken: "Backglass Broken",
+backglassBrokenDesc: "Replace broken back glass to restore your phone's appearance and protection.",
+lineProblem: "Line Problem",
+lineProblemDesc: "Fix network and signal issues for better connectivity.",
+accessories: "Accessories",
+allTypeCable: "All Type Cable",
+allTypeCableDesc: "High-quality cables for charging and data transfer.",
+powerbank: "Powerbank",
+powerbankDesc: "Portable power banks to keep your devices charged on the go.",
+earphone: "Earphone",
+earphoneDesc: "High-quality earphones for an immersive audio experience.",
+phoneHolder: "Phone Holder",
+phoneHolderDesc: "Sturdy phone holders for convenient use in cars and homes.",
+adapter: "Adapter",
+adapterDesc: "Compatible adapters for various devices.",
+temperedGlass: "Tempered Glass",
+temperedGlassDesc: "Durable tempered glass screen protectors for your devices.",
+casingPhone: "Casing Phone",
+casingPhoneDesc: "Stylish and protective phone cases for various models."
+},
+my: {
+services: "Perkhidmatan",
+experts: "Pakar Kami",
+testimonials: "Testimoni",
+contact: "Hubungi",
+callNow: "Hubungi Sekarang",
+bookRepair: "Tempah Pembaikan",
+name: "Nama",
+phone: "Telefon",
+serviceType: "Jenis Perkhidmatan",
+selectService: "Pilih perkhidmatan",
+screenRepair: "Pembaikan Skrin",
+batteryReplacement: "Penggantian Bateri",
+waterDamage: "Kerosakan Air",
+cameraRepair: "Pembaikan Kamera",
+speakerRepair: "Pembaikan Pembesar Suara",
+softwareSolutions: "Penyelesaian Perisian",
+preferredDate: "Tarikh Pilihan",
+submit: "Hantar Tempahan",
+bookingSuccess: "Tempahan berjaya dihantar!",
+heroTitle: "Perkhidmatan Pembaikan Telefon Profesional",
+heroDesc: "Pembaikan pakar dengan diagnosis percuma. Dapatkan peranti anda dibaiki oleh juruteknik berpengalaman dengan rekod prestasi yang terbukti.",
+freeChecking: "Pemeriksaan Percuma",
+yearsExp: "Tahun Pengalaman",
+satisfiedCustomers: "Pelanggan Berpuas Hati",
+repairedDevices: "Peranti Dibaiki",
+ourServices: "Perkhidmatan Kami",
+meetExperts: "Kenali Pakar Kami",
+customerSay: "Kata Pelanggan Kami",
+visitStore: "Lawati Kedai Kami",
+contactInfo: "Maklumat Hubungan",
+address: "Alamat",
+workingHours: "Waktu Operasi",
+workingTime1: "Isnin-Sabtu: 9:00 PG - 8:00 MLM",
+workingTime2: "Ahad: 10:00 PG - 6:00 MLM",
+email: "Emel",
+quickLinks: "Pautan Pantas",
+connectUs: "Hubungi Kami",
+copyright: "© 2025 Go Fix Solution. Hak cipta terpelihara.",
+screenRepairDesc: "Perkhidmatan penggantian LCD profesional dengan alat ganti tulen dan perlindungan waranti.",
+batteryDesc: "Pulihkan hayat bateri telefon anda dengan bateri gantian berkualiti tinggi.",
+waterDamageDesc: "Rawatan khusus untuk peranti yang rosak akibat air dengan kadar kejayaan yang tinggi.",
+cameraRepairDesc: "Penggantian modul kamera pakar dan pembaikan untuk foto yang jelas.",
+speakerRepairDesc: "Baiki masalah audio dengan pembaikan pembesar suara dan mikrofon profesional.",
+softwareDesc: "Kemaskini sistem, pemulihan data, dan penyelesaian masalah perisian.",
+formatPhone: "Format Telefon",
+formatPhoneDesc: "Perkhidmatan pemformatan telefon profesional untuk memulihkan peranti anda ke tetapan kilang.",
+phoneLock: "Kunci Telefon",
+phoneLockDesc: "Buka kunci telefon atau baiki masalah berkaitan kunci dengan perkhidmatan pakar kami.",
+buttonProblem: "Masalah Butang On/Off & Volume",
+buttonProblemDesc: "Baiki masalah dengan butang kuasa, butang volume, dan masalah perkakasan lain.",
+chargingBoard: "Papan Pengecasan",
+chargingBoardDesc: "Baiki atau ganti papan pengecasan yang rosak untuk memulihkan fungsi pengecasan.",
+pinCharge: "Pin Pengecasan",
+pinChargeDesc: "Baiki masalah dengan pin pengecasan dan penyambung untuk pengecasan yang boleh dipercayai.",
+backglassBroken: "Kaca Belakang Pecah",
+backglassBrokenDesc: "Ganti kaca belakang yang pecah untuk memulihkan penampilan dan perlindungan telefon anda.",
+lineProblem: "Masalah Talian",
+lineProblemDesc: "Baiki masalah rangkaian dan isyarat untuk sambungan yang lebih baik.",
+accessories: "Aksesori",
+allTypeCable: "Semua Jenis Kabel",
+allTypeCableDesc: "Kabel berkualiti tinggi untuk pengecasan dan pemindahan data.",
+powerbank: "Powerbank",
+powerbankDesc: "Powerbank mudah alih untuk mengecas peranti anda semasa dalam perjalanan.",
+earphone: "Earphone",
+earphoneDesc: "Earphone berkualiti tinggi untuk pengalaman audio yang mendalam.",
+phoneHolder: "Pemegang Telefon",
+phoneHolderDesc: "Pemegang telefon yang kukuh untuk kegunaan mudah di dalam kereta dan rumah.",
+adapter: "Adapter",
+adapterDesc: "Adapter yang serasi untuk pelbagai peranti.",
+temperedGlass: "Kaca Tempered",
+temperedGlassDesc: "Pelindung skrin kaca tempered yang tahan lama untuk peranti anda.",
+casingPhone: "Casing Telefon",
+casingPhoneDesc: "Casing telefon yang bergaya dan melindungi untuk pelbagai model."
+}
+};
+let currentLang = 'en';
+let currentTestimonialSlide = 0;
+function toggleLanguage() {
+const menu = document.getElementById('languageMenu');
+menu.classList.toggle('hidden');
+}
+function changeLang(lang) {
+currentLang = lang;
+document.getElementById('currentLang').textContent = lang.toUpperCase();
+document.getElementById('languageMenu').classList.add('hidden');
+// Update all translatable elements
+document.querySelectorAll('[data-translate]').forEach(element => {
+const key = element.getAttribute('data-translate');
+if (translations[currentLang][key]) {
+if (element.tagName === 'INPUT' && element.type === 'submit') {
+element.value = translations[currentLang][key];
+} else {
+element.textContent = translations[currentLang][key];
+}
+}
+});
+}
+// Close language menu when clicking outside
+document.addEventListener('click', (e) => {
+const menu = document.getElementById('languageMenu');
+const langButton = document.querySelector('[onclick="toggleLanguage()"]');
+if (!menu.contains(e.target) && !langButton.contains(e.target)) {
+menu.classList.add('hidden');
+}
+});
+function slideTestimonials(direction) {
+const slider = document.querySelector('.testimonial-slider');
+const slides = document.querySelectorAll('.testimonial-slider > div');
+const maxSlides = slides.length - 2;
+if (direction === 'next' && currentTestimonialSlide < maxSlides) {
+currentTestimonialSlide++;
+} else if (direction === 'prev' && currentTestimonialSlide > 0) {
+currentTestimonialSlide--;
+}
+slider.style.transform = `translateX(-${currentTestimonialSlide * (400 + 32)}px)`;
+}
+function toggleMobileMenu() {
+const menu = document.querySelector('.mobile-menu');
+const body = document.body;
+menu.classList.toggle('hidden');
+if (!menu.classList.contains('hidden')) {
+body.style.overflow = 'hidden';
+} else {
+body.style.overflow = '';
+}
+}
+function openBookingModal() {
+document.getElementById('bookingModal').classList.remove('hidden');
+}
+function closeBookingModal() {
+document.getElementById('bookingModal').classList.add('hidden');
+}
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+e.preventDefault();
+closeBookingModal();
+showSuccessMessage();
+});
+const backToTopButton = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 500) {
+backToTopButton.classList.remove('hidden');
+} else {
+backToTopButton.classList.add('hidden');
+}
+});
+backToTopButton.addEventListener('click', () => {
+window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+function showSuccessMessage() {
+const messageDiv = document.createElement('div');
+messageDiv.className = 'fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+messageDiv.textContent = translations[currentLang].bookingSuccess;
+document.body.appendChild(messageDiv);
+setTimeout(() => messageDiv.remove(), 3000);
+}
+</script>
+</body>
+</html>
