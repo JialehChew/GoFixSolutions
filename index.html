@@ -44,19 +44,36 @@ DEFAULT: '8px',
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 <style>
-:where([class^="ri-"])::before { content: "\f3c2"; }
-.testimonial-slider {
-transition: transform 0.5s ease;
-}
-<style>
 /* 通用样式 */
 :where([class^="ri-"])::before { content: "\f3c2"; }
 .testimonial-slider {
   transition: transform 0.5s ease;
 }
 
+/* 添加主体内容的顶部间距，避免被固定导航栏遮挡 */
+main {
+  padding-top: 60px; /* 与导航栏高度匹配 */
+}
+
 /* 优化手机页面的CSS */
 @media (max-width: 640px) {
+  /* 调整导航栏样式和高度 */
+  header {
+    height: 60px; /* 确保导航栏高度一致 */
+  }
+  
+  /* 增加主体内容的顶部内边距，确保在手机上有足够空间 */
+  main {
+    padding-top: 60px; /* 与导航栏高度匹配 */
+  }
+  
+  /* 修复锚点定位，确保滚动到锚点时内容不被导航栏遮挡 */
+  #services, #accessories, #testimonials, #contact {
+    scroll-margin-top: 70px; /* 比导航栏略高，确保内容完全可见 */
+    padding-top: 3rem; /* 保持原有内边距 */
+    padding-bottom: 3rem; /* 保持原有内边距 */
+  }
+
   /* 1. 调整导航栏 */
   .mobile-menu {
     top: 60px; /* 调整移动菜单的位置 */
@@ -89,9 +106,11 @@ transition: transform 0.5s ease;
   /* 4. 调整 Hero 部分的标题和按钮 */
   .text-5xl {
     font-size: 2rem; /* 调整标题字体大小 */
+    line-height: 1.2; /* 调整行高，提高可读性 */
   }
   .text-xl {
     font-size: 1rem; /* 调整描述字体大小 */
+    line-height: 1.5; /* 调整行高，提高可读性 */
   }
   .px-8 {
     padding-left: 1rem; /* 调整按钮的内边距 */
@@ -104,54 +123,128 @@ transition: transform 0.5s ease;
     font-size: 1rem; /* 调整按钮的字体大小 */
   }
 
-  /* 6. 调整 Testimonials 部分 */
-/* 1. 移除 Testimonial 部分的左右边框 */
-.testimonial-slider {
+  /* 6. 重新设计 Testimonials 部分 */
+  /* 移除之前的testimonial样式 */
+  .testimonial-slider {
     overflow-x: auto; /* 允许横向滚动 */
     scroll-snap-type: x mandatory; /* 启用滚动吸附 */
-    padding: 0; /* 移除左右内边距 */
-    margin: 0; /* 移除左右外边距 */
+    -webkit-overflow-scrolling: touch; /* 增强iOS滚动体验 */
+    scrollbar-width: none; /* 隐藏滚动条 - Firefox */
+    position: relative; /* 确保定位正确 */
+    padding-bottom: 8px; /* 添加底部间距，避免遮挡指示器 */
   }
-
-  /* 2. 调整 Testimonial 卡片的宽度 */
-  .min-w-[400px] {
-    min-width: 90%; /* 调整卡片的宽度 */
-    scroll-snap-align: start; /* 启用滚动吸附 */
-    margin: 0 0.5rem; /* 增加卡片之间的间距 */
-  }
-
-  /* 3. 调整左右按钮的位置 */
-  .testimonial-slider button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8); /* 半透明背景 */
-    border: none;
-    padding: 0.5rem;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 10; /* 确保按钮在卡片上方 */
-  }
-  .testimonial-slider button:first-child {
-    left: 0.5rem; /* 左按钮位置 */
-  }
-  .testimonial-slider button:last-child {
-    right: 0.5rem; /* 右按钮位置 */
-  }
-
-  /* 4. 隐藏默认的左右按钮（如果存在） */
-  .absolute.left-0,
-  .absolute.right-0 {
+  
+  /* 隐藏滚动条 - Chrome, Safari */
+  .testimonial-slider::-webkit-scrollbar {
     display: none;
+  }
+  
+  /* 调整 Testimonial 卡片的宽度和显示 */
+  .min-w-\[400px\] {
+    min-width: 85%; /* 减小卡片宽度 */
+    scroll-snap-align: center; /* 使卡片居中对齐 */
+    margin: 0 0.75rem; /* 调整卡片之间的间距 */
+    transition: all 0.3s ease; /* 平滑过渡效果 */
+  }
+  
+  /* 调整testimonial卡片内容样式 */
+  .testimonial-slider .bg-white {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05); /* 添加细边框增强边界感 */
+  }
+  
+  /* 当前活动卡片突出显示 */
+  .testimonial-slider .active {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 添加滑动过渡效果 */
+  .testimonial-slider > div {
+    transition: opacity 0.3s ease;
+  }
+  
+  /* 滑动指示器样式 */
+  #testimonial-indicators span {
+    transition: all 0.3s ease;
+  }
+  
+  #testimonial-indicators span:hover {
+    transform: scale(1.2);
   }
 
   /* 7. 调整 Contact 部分 */
   .grid-cols-1 {
     grid-template-columns: 1fr; /* 在小屏幕上显示一列 */
   }
-  .h-[400px] {
+  .h-\[400px\] {
     height: 300px; /* 调整地图的高度 */
   }
+  
+  /* 8. 调整Hero区域高度和内容 */
+  .h-\[600px\] {
+    height: 500px; /* 减小手机上的hero高度 */
+  }
+  
+  /* 9. 优化服务和配件部分间距 */
+  #services, #accessories, #testimonials, #contact {
+    padding-top: 3rem; /* 减小顶部间距 */
+    padding-bottom: 3rem; /* 减小底部间距 */
+  }
+  
+  /* 10. 调整社交媒体图标大小 */
+  .text-2xl {
+    font-size: 1.5rem; /* 调整图标大小 */
+  }
+  
+  /* 11. 调整页脚布局 */
+  footer .grid {
+    gap: 2rem; /* 减小页脚各部分的间距 */
+  }
+  
+  /* 12. 优化预订表单 */
+  #bookingModal .bg-white {
+    width: 95%; /* 调整模态框宽度 */
+    max-height: 85vh; /* 限制最大高度 */
+  }
+  
+  /* 13. 改善数字展示 */
+  .text-3xl {
+    font-size: 1.75rem; /* 调整数字大小 */
+  }
+
+  /* 确保Hero部分不被导航栏遮挡 */
+  .hero-section {
+    margin-top: 60px; /* 与导航栏高度匹配 */
+    height: calc(500px - 60px); /* 减去导航栏高度 */
+  }
+}
+
+/* 优化中等尺寸屏幕 (641px - 768px) */
+@media (min-width: 641px) and (max-width: 768px) {
+  /* 调整服务卡片布局为两列 */
+  #services .grid, 
+  #accessories .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  /* 调整testimonial滑块 */
+  .min-w-\[400px\] {
+    min-width: 350px;
+  }
+}
+
+/* 提高页面加载性能和用户体验的通用优化 */
+img {
+  loading: lazy; /* 延迟加载图片 */
+}
+
+/* 优化点击区域，提高移动端易用性 */
+a, button {
+  touch-action: manipulation; /* 优化触摸操作 */
 }
 </style>
 </style>
@@ -243,8 +336,8 @@ Call Us Now
 </div>
 </div>
 </div>
-<main class="pt-16">
-<section class="relative h-[600px] md:h-[600px] bg-cover bg-center" style="background-image: url('https://public.readdy.ai/ai/img_res/eb3da73c98c860277537162bc5ca1463.jpg')">
+<main>
+<section class="hero-section relative h-[600px] md:h-[600px] bg-cover bg-center" style="background-image: url('https://public.readdy.ai/ai/img_res/eb3da73c98c860277537162bc5ca1463.jpg')">
 <div class="absolute inset-0 bg-gradient-to-r from-white/90 to-white/30"></div>
 <div class="container mx-auto px-6 h-full flex items-center relative">
 <div class="max-w-2xl">
@@ -439,7 +532,7 @@ Call Us Now
 <div class="container mx-auto px-6 max-w-7xl">
 <h2 class="text-3xl font-bold text-center text-gray-900 mb-12" data-translate="customerSay">What Our Customers Say</h2>
 <div class="relative">
-<div class="overflow-hidden px-12">
+<div class="overflow-hidden">
 <div class="testimonial-slider flex transition-transform duration-500 ease-in-out">
 <div class="min-w-[400px] mx-4">
 <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -497,12 +590,17 @@ Call Us Now
 </div>
 </div>
 </div>
-<button class="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg" onclick="slideTestimonials('prev')">
-<i class="ri-arrow-left-s-line text-2xl text-gray-600"></i>
-</button>
-<button class="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg" onclick="slideTestimonials('next')">
-<i class="ri-arrow-right-s-line text-2xl text-gray-600"></i>
-</button>
+
+<div class="flex justify-center mt-6" id="testimonial-indicators">
+<span class="h-2 w-2 rounded-full bg-primary mx-1 cursor-pointer" data-index="0"></span>
+<span class="h-2 w-2 rounded-full bg-gray-300 mx-1 cursor-pointer" data-index="1"></span>
+<span class="h-2 w-2 rounded-full bg-gray-300 mx-1 cursor-pointer" data-index="2"></span>
+</div>
+
+<div class="mt-4 text-center text-gray-500 text-sm md:hidden">
+<i class="ri-arrow-left-right-line mr-1"></i>
+<span data-translate="swipeForMore">Swipe to see more reviews</span>
+</div>
 </div>
 </div>
 </section>
@@ -632,6 +730,7 @@ Call Us Now
 <li class="text-gray-400">Pin Charge</li>
 <li class="text-gray-400">Backglass Broken</li>
 <li class="text-gray-400">Line Problem</li>
+<li class="text-gray-400">Motherboard Repair</li>
 </ul>
 </div>
 <div>
@@ -694,6 +793,7 @@ Call Us Now
 <option value="pin">Pin Charge</option>
 <option value="backglass">Backglass Broken</option>
 <option value="line">Line Problem</option>
+<option value="Motherboard">Motherboard Repair</option>
 </select>
 </div>
 <div>
@@ -827,8 +927,8 @@ backglassBroken: "Backglass Broken",
 backglassBrokenDesc: "Replace broken back glass to restore your phone's appearance and protection.",
 lineProblem: "Line Problem",
 lineProblemDesc: "Fix network and signal issues for better connectivity.",
-motherboardRepair: "Pembaikan Papan Induk",
-motherboardRepairDesc: "Pembaikan dan penggantian papan induk yang rosak untuk memulihkan fungsi penuh.",
+motherboardRepair: "Motherboard Repair",
+motherboardRepairDesc: "Expert repair and replacement of damaged motherboards to restore full functionality.",
 accessories: "Accessories",
 allTypeCable: "All Type Cable",
 allTypeCableDesc: "High-quality cables for charging and data transfer.",
@@ -843,7 +943,8 @@ adapterDesc: "Compatible adapters for various devices.",
 temperedGlass: "Tempered Glass",
 temperedGlassDesc: "Durable tempered glass screen protectors for your devices.",
 casingPhone: "Casing Phone",
-casingPhoneDesc: "Stylish and protective phone cases for various models."
+casingPhoneDesc: "Stylish and protective phone cases for various models.",
+swipeForMore: "Swipe to see more reviews"
 },
 my: {
 services: "Perkhidmatan",
@@ -918,7 +1019,8 @@ adapterDesc: "Adapter yang serasi untuk pelbagai peranti.",
 temperedGlass: "Kaca Tempered",
 temperedGlassDesc: "Pelindung skrin kaca tempered yang tahan lama untuk peranti anda.",
 casingPhone: "Casing Telefon",
-casingPhoneDesc: "Casing telefon yang bergaya dan melindungi untuk pelbagai model."
+casingPhoneDesc: "Casing telefon yang bergaya dan melindungi untuk pelbagai model.",
+swipeForMore: "Leret untuk melihat lebih banyak ulasan"
 }
 };
 let currentLang = 'en';
@@ -951,17 +1053,137 @@ if (!menu.contains(e.target) && !langButton.contains(e.target)) {
 menu.classList.add('hidden');
 }
 });
-function slideTestimonials(direction) {
-const slider = document.querySelector('.testimonial-slider');
-const slides = document.querySelectorAll('.testimonial-slider > div');
-const maxSlides = slides.length - 2;
-if (direction === 'next' && currentTestimonialSlide < maxSlides) {
-currentTestimonialSlide++;
-} else if (direction === 'prev' && currentTestimonialSlide > 0) {
-currentTestimonialSlide--;
+function slideTestimonials(index) {
+  const slider = document.querySelector('.testimonial-slider');
+  const slides = document.querySelectorAll('.testimonial-slider > div');
+  
+  // 验证索引范围
+  if (index < 0) index = 0;
+  if (index >= slides.length) index = slides.length - 1;
+  
+  currentTestimonialSlide = index;
+  
+  // 移除所有卡片的active类
+  slides.forEach(slide => {
+    slide.querySelector('.bg-white').classList.remove('active');
+  });
+  
+  // 计算滚动位置
+  let offset;
+  const slideWidth = slides[0].offsetWidth;
+  const slideMargin = parseInt(window.getComputedStyle(slides[0]).marginRight);
+  offset = currentTestimonialSlide * (slideWidth + slideMargin);
+  
+  // 使用scrollTo替代transform，提供更自然的滚动体验
+  if (window.innerWidth <= 640) {
+    // 移动设备上使用scrollLeft
+    slider.scrollTo({
+      left: offset,
+      behavior: 'smooth'
+    });
+  } else {
+    // 桌面设备继续使用transform
+    slider.style.transform = `translateX(-${offset}px)`;
+  }
+  
+  // 添加active类到当前卡片
+  if (slides[currentTestimonialSlide]) {
+    slides[currentTestimonialSlide].querySelector('.bg-white').classList.add('active');
+  }
+  
+  // 更新指示器状态
+  updateTestimonialIndicators();
 }
-slider.style.transform = `translateX(-${currentTestimonialSlide * (400 + 32)}px)`;
+
+// 更新指示器状态
+function updateTestimonialIndicators() {
+  const indicators = document.querySelectorAll('#testimonial-indicators span');
+  
+  indicators.forEach((indicator, index) => {
+    if (index === currentTestimonialSlide) {
+      indicator.classList.remove('bg-gray-300');
+      indicator.classList.add('bg-primary');
+    } else {
+      indicator.classList.remove('bg-primary');
+      indicator.classList.add('bg-gray-300');
+    }
+  });
 }
+
+// 增强的移动端Testimonials滑动体验
+const testimonialSlider = document.querySelector('.testimonial-slider');
+if (testimonialSlider) {
+  let startX, startScrollLeft, isDown = false;
+  
+  // 监听手动滚动事件，更新当前卡片状态
+  testimonialSlider.addEventListener('scroll', function() {
+    if (!isDown) { // 只在松开后处理，避免滚动过程中频繁计算
+      const slides = document.querySelectorAll('.testimonial-slider > div');
+      const slideWidth = slides[0].offsetWidth;
+      const slideMargin = parseInt(window.getComputedStyle(slides[0]).marginRight);
+      const scrollPosition = testimonialSlider.scrollLeft;
+      
+      // 计算当前显示的卡片索引
+      const index = Math.round(scrollPosition / (slideWidth + slideMargin));
+      
+      if (index !== currentTestimonialSlide) {
+        currentTestimonialSlide = index;
+        
+        // 更新active类
+        slides.forEach((slide, i) => {
+          if (i === currentTestimonialSlide) {
+            slide.querySelector('.bg-white').classList.add('active');
+          } else {
+            slide.querySelector('.bg-white').classList.remove('active');
+          }
+        });
+        
+        // 更新指示器
+        updateTestimonialIndicators();
+      }
+    }
+  }, { passive: true });
+  
+  // 设置指示器点击事件
+  document.querySelectorAll('#testimonial-indicators span').forEach(indicator => {
+    indicator.addEventListener('click', function() {
+      const index = parseInt(this.getAttribute('data-index'));
+      slideTestimonials(index);
+    });
+  });
+  
+  // 初始化
+  document.addEventListener('DOMContentLoaded', function() {
+    // 给第一个卡片添加active类
+    const firstSlide = testimonialSlider.querySelector('div:first-child .bg-white');
+    if (firstSlide) {
+      firstSlide.classList.add('active');
+    }
+    
+    // 初始化指示器
+    updateTestimonialIndicators();
+  });
+
+  // 添加滑动结束后自动对齐的功能
+  testimonialSlider.addEventListener('touchend', function() {
+    // 等待一小段时间，确保滚动动画已完成
+    setTimeout(() => {
+      const slides = document.querySelectorAll('.testimonial-slider > div');
+      const slideWidth = slides[0].offsetWidth;
+      const slideMargin = parseInt(window.getComputedStyle(slides[0]).marginRight);
+      const scrollPosition = testimonialSlider.scrollLeft;
+      
+      // 计算最近的卡片索引
+      const index = Math.round(scrollPosition / (slideWidth + slideMargin));
+      
+      // 只有当计算的索引与当前索引不同时，才进行滚动
+      if (index !== currentTestimonialSlide) {
+        slideTestimonials(index);
+      }
+    }, 150);
+  });
+}
+
 function toggleMobileMenu() {
 const menu = document.querySelector('.mobile-menu');
 const body = document.body;
@@ -1001,6 +1223,44 @@ messageDiv.textContent = translations[currentLang].bookingSuccess;
 document.body.appendChild(messageDiv);
 setTimeout(() => messageDiv.remove(), 3000);
 }
+
+// 修改锚点滚动函数，确保内容不被导航栏遮挡
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    
+    if (targetElement) {
+      // 如果是移动菜单，点击后关闭菜单
+      if (document.querySelector('.mobile-menu') && 
+          !document.querySelector('.mobile-menu').classList.contains('hidden')) {
+        toggleMobileMenu();
+      }
+      
+      // 获取导航栏高度，用于计算偏移量
+      const headerHeight = document.querySelector('header').offsetHeight;
+      const extraPadding = 10; // 额外间距，让内容完全可见
+      
+      // 平滑滚动到目标位置，考虑导航栏高度
+      window.scrollTo({
+        top: targetElement.offsetTop - (headerHeight + extraPadding),
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// 优化移动端表单提交按钮的交互
+const submitButtons = document.querySelectorAll('form button[type="submit"]');
+submitButtons.forEach(button => {
+  button.addEventListener('touchstart', function() {
+    this.style.transform = 'scale(0.98)';
+  });
+  button.addEventListener('touchend', function() {
+    this.style.transform = 'scale(1)';
+  });
+});
 </script>
 </body>
 </html>
