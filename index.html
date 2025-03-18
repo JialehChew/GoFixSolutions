@@ -48,6 +48,112 @@ DEFAULT: '8px',
 .testimonial-slider {
 transition: transform 0.5s ease;
 }
+<style>
+/* 通用样式 */
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.testimonial-slider {
+  transition: transform 0.5s ease;
+}
+
+/* 优化手机页面的CSS */
+@media (max-width: 640px) {
+  /* 1. 调整导航栏 */
+  .mobile-menu {
+    top: 60px; /* 调整移动菜单的位置 */
+    padding: 1rem; /* 增加内边距 */
+  }
+  .mobile-menu a {
+    font-size: 16px; /* 调整字体大小 */
+    padding: 0.5rem 0; /* 增加链接的上下内边距 */
+  }
+
+  /* 2. 调整服务卡片的布局 */
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr); /* 在小屏幕上显示一列 */
+  }
+  .bg-white {
+    padding: 1rem; /* 调整卡片的内边距 */
+    margin-bottom: 1rem; /* 增加卡片之间的间距 */
+  }
+
+  /* 3. 调整图片和地图的大小 */ 
+  img {
+    max-width: 100%; /* 确保图片不会超出屏幕 */
+    height: auto;
+  }
+  iframe {
+    width: 100%; /* 确保地图不会超出屏幕 */
+    height: 250px; /* 调整地图的高度 */
+  }
+
+  /* 4. 调整 Hero 部分的标题和按钮 */
+  .text-5xl {
+    font-size: 2rem; /* 调整标题字体大小 */
+  }
+  .text-xl {
+    font-size: 1rem; /* 调整描述字体大小 */
+  }
+  .px-8 {
+    padding-left: 1rem; /* 调整按钮的内边距 */
+    padding-right: 1rem;
+  }
+
+  /* 5. 调整按钮大小 */
+  button {
+    padding: 0.75rem 1.5rem; /* 调整按钮的内边距 */
+    font-size: 1rem; /* 调整按钮的字体大小 */
+  }
+
+  /* 6. 调整 Testimonials 部分 */
+/* 1. 移除 Testimonial 部分的左右边框 */
+.testimonial-slider {
+    overflow-x: auto; /* 允许横向滚动 */
+    scroll-snap-type: x mandatory; /* 启用滚动吸附 */
+    padding: 0; /* 移除左右内边距 */
+    margin: 0; /* 移除左右外边距 */
+  }
+
+  /* 2. 调整 Testimonial 卡片的宽度 */
+  .min-w-[400px] {
+    min-width: 90%; /* 调整卡片的宽度 */
+    scroll-snap-align: start; /* 启用滚动吸附 */
+    margin: 0 0.5rem; /* 增加卡片之间的间距 */
+  }
+
+  /* 3. 调整左右按钮的位置 */
+  .testimonial-slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* 确保按钮在卡片上方 */
+  }
+  .testimonial-slider button:first-child {
+    left: 0.5rem; /* 左按钮位置 */
+  }
+  .testimonial-slider button:last-child {
+    right: 0.5rem; /* 右按钮位置 */
+  }
+
+  /* 4. 隐藏默认的左右按钮（如果存在） */
+  .absolute.left-0,
+  .absolute.right-0 {
+    display: none;
+  }
+
+  /* 7. 调整 Contact 部分 */
+  .grid-cols-1 {
+    grid-template-columns: 1fr; /* 在小屏幕上显示一列 */
+  }
+  .h-[400px] {
+    height: 300px; /* 调整地图的高度 */
+  }
+}
+</style>
 </style>
 </head>
 <body class="bg-gray-50">
@@ -60,7 +166,8 @@ transition: transform 0.5s ease;
 <a href="#accessories" class="text-gray-700 hover:text-primary">Accessories</a>
 <a href="#testimonials" class="text-gray-700 hover:text-primary">Testimonials</a>
 <a href="#contact" class="text-gray-700 hover:text-primary">Contact</a>
-<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90" onclick="window.location.href='tel:019-288 8012'">Call Us Now</button>
+<!-- 修改后的 Call Us Now 按钮 -->
+<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90" onclick="window.location.href='https://linktr.ee/gofixsolution'">Call Us Now</button>
 <div class="relative">
 <button onclick="toggleLanguage()" class="flex items-center space-x-1 text-gray-700 hover:text-primary">
 <span id="currentLang">EN</span>
@@ -261,6 +368,13 @@ Call Us Now
 </div>
 <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="lineProblem">Line Problem</h3>
 <p class="text-gray-600" data-translate="lineProblemDesc">Fix network and signal issues for better connectivity.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+  <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-cpu-line text-2xl text-primary"></i>
+  </div>
+  <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="motherboardRepair">Motherboard Repair</h3>
+  <p class="text-gray-600" data-translate="motherboardRepairDesc">Expert repair and replacement of damaged motherboards to restore full functionality.</p>
 </div>
 </div>
 </div>
@@ -539,7 +653,7 @@ Call Us Now
 </div>
 </footer>
 <div class="fixed bottom-20 md:bottom-6 right-8 md:right-12 flex flex-col space-y-3 md:space-y-4">
-<a href="https://wa.me/0192888012" target="_blank" class="bg-green-500 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-green-600">
+<a href="https://wa.me/+60192888012" target="_blank" class="bg-green-500 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-green-600">
 <i class="ri-whatsapp-line text-2xl"></i>
 </a>
 <button id="backToTop" class="bg-gray-900 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-800 hidden">
@@ -713,6 +827,8 @@ backglassBroken: "Backglass Broken",
 backglassBrokenDesc: "Replace broken back glass to restore your phone's appearance and protection.",
 lineProblem: "Line Problem",
 lineProblemDesc: "Fix network and signal issues for better connectivity.",
+motherboardRepair: "Pembaikan Papan Induk",
+motherboardRepairDesc: "Pembaikan dan penggantian papan induk yang rosak untuk memulihkan fungsi penuh.",
 accessories: "Accessories",
 allTypeCable: "All Type Cable",
 allTypeCableDesc: "High-quality cables for charging and data transfer.",
@@ -887,5 +1003,4 @@ setTimeout(() => messageDiv.remove(), 3000);
 }
 </script>
 </body>
-</html>"<!-- 强制更新 -->" 
-"<!-- 强制更新 -->" 
+</html>
