@@ -906,69 +906,7 @@ a, button {
 </div>
 </div>
 <script>
-// Enable mobile device testing
-function enableMobilePreview() {
-const devices = {
-'iPhone SE': { width: 375, height: 667 },
-'iPhone XR': { width: 414, height: 896 },
-'iPhone 12 Pro': { width: 390, height: 844 },
-'Pixel 5': { width: 393, height: 851 },
-'Samsung Galaxy S20': { width: 412, height: 915 },
-'iPad Mini': { width: 768, height: 1024 },
-'iPad Pro': { width: 1024, height: 1366 }
-};
-const previewBar = document.createElement('div');
-previewBar.className = 'fixed top-0 left-0 right-0 bg-gray-900 text-white p-4 z-[9999] flex items-center justify-between';
-previewBar.innerHTML = `
-<div class="flex items-center space-x-4">
-<select id="deviceSelect" class="bg-gray-800 text-white px-4 py-2 rounded-lg">
-${Object.keys(devices).map(device => `<option value="${device}">${device}</option>`).join('')}
-</select>
-<button id="rotateDevice" class="bg-gray-800 px-4 py-2 rounded-lg hover:bg-gray-700">
-<i class="ri-rotate-line"></i> Rotate
-</button>
-</div>
-<button id="closePreview" class="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600">
-<i class="ri-close-line"></i> Close Preview
-</button>
-`;
-document.body.appendChild(previewBar);
-const viewport = document.createElement('div');
-viewport.className = 'fixed inset-0 bg-gray-800 z-[9998] flex items-center justify-center mt-16';
-viewport.innerHTML = `
-<div id="deviceFrame" class="bg-white overflow-hidden transition-all duration-300">
-<iframe src="${window.location.href}" class="w-full h-full border-0"></iframe>
-</div>
-`;
-document.body.appendChild(viewport);
-const deviceSelect = document.getElementById('deviceSelect');
-const deviceFrame = document.getElementById('deviceFrame');
-let isLandscape = false;
-function updateDeviceSize() {
-const device = devices[deviceSelect.value];
-const width = isLandscape ? device.height : device.width;
-const height = isLandscape ? device.width : device.height;
-deviceFrame.style.width = width + 'px';
-deviceFrame.style.height = height + 'px';
-}
-deviceSelect.addEventListener('change', updateDeviceSize);
-document.getElementById('rotateDevice').addEventListener('click', () => {
-isLandscape = !isLandscape;
-updateDeviceSize();
-});
-document.getElementById('closePreview').addEventListener('click', () => {
-previewBar.remove();
-viewport.remove();
-window.location.reload();
-});
-updateDeviceSize();
-}
-// Add preview button
-const previewButton = document.createElement('button');
-previewButton.className = 'fixed bottom-20 left-8 bg-primary text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-primary/90 z-50';
-previewButton.innerHTML = '<i class="ri-mobile-line text-2xl"></i>';
-previewButton.onclick = enableMobilePreview;
-document.body.appendChild(previewButton);
+// 以下是保留的其他脚本代码
 const translations = {
 en: {
 services: "Services",
