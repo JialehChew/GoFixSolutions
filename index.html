@@ -37,7 +37,6 @@ DEFAULT: '8px',
 }
 }
 }
-}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -220,6 +219,93 @@ main {
     margin-top: 60px; /* 与导航栏高度匹配 */
     height: calc(500px - 60px); /* 减去导航栏高度 */
   }
+
+  /* 优化移动端Free Checking按钮 */
+  .bg-primary {
+    background-color: #0284c7; /* 确保主色调一致 */
+    position: relative;
+    z-index: 1; /* 确保按钮在其他元素之上 */
+  }
+  
+  /* 添加闪光效果提升按钮视觉效果 */
+  button[data-translate="freeChecking"]::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(30deg);
+    animation: shine 4s infinite;
+    z-index: -1;
+  }
+  
+  @keyframes shine {
+    0% {
+      left: -100%;
+      opacity: 0;
+    }
+    10% {
+      left: -50%;
+      opacity: 0.5;
+    }
+    20% {
+      left: 100%;
+      opacity: 0;
+    }
+    100% {
+      left: 100%;
+      opacity: 0;
+    }
+  }
+}
+
+/* 增强Free Checking按钮的视觉效果 */
+button[data-translate="freeChecking"] {
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3); /* 添加阴影效果 */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* 文字阴影增强可读性 */
+  font-weight: 600; /* 加粗文字 */
+  letter-spacing: 0.2px; /* 增加字母间距 */
+  position: relative;
+  overflow: hidden; /* 控制闪光效果不溢出 */
+  background-color: #0284c7; /* 确保颜色一致 */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* 添加细微边框 */
+  transform: translateZ(0); /* 优化移动设备性能 */
+}
+
+/* 鼠标悬停效果增强 */
+button[data-translate="freeChecking"]:hover {
+  transform: translateY(-2px); /* 轻微上移 */
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4); /* 增强阴影 */
+}
+
+/* 按下效果 */
+button[data-translate="freeChecking"]:active {
+  transform: translateY(1px); /* 轻微下移 */
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3); /* 减弱阴影 */
+}
+
+/* 移动端特有样式 */
+@media (max-width: 640px) {
+  /* 增强移动端按钮突出度 */
+  button[data-translate="freeChecking"] {
+    padding: 0.85rem 1.75rem; /* 略微增大移动端按钮 */
+    font-size: 1.05rem; /* 增大字体 */
+    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35); /* 更明显的阴影 */
+  }
+  
+  /* 脉动动画效果 */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  /* 添加脉动效果到移动端按钮 */
+  .hero-section button[data-translate="freeChecking"] {
+    animation: pulse 2s infinite;
+  }
 }
 
 /* 优化中等尺寸屏幕 (641px - 768px) */
@@ -246,6 +332,13 @@ img {
 a, button {
   touch-action: manipulation; /* 优化触摸操作 */
 }
+
+/* 调整main的padding，为横幅留出空间 */
+@media (min-width: 641px) {
+  main {
+    padding-top: 92px; /* 60px导航栏 + 32px横幅 */
+  }
+}
 </style>
 </style>
 </head>
@@ -260,7 +353,7 @@ a, button {
 <a href="#testimonials" class="text-gray-700 hover:text-primary">Testimonials</a>
 <a href="#contact" class="text-gray-700 hover:text-primary">Contact</a>
 <!-- 修改后的 Call Us Now 按钮 -->
-<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90" onclick="window.location.href='https://linktr.ee/gofixsolution'">Call Us Now</button>
+<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90" onclick="window.location.href='https://wa.me/+60192888012'">Call Us Now</button>
 <div class="relative">
 <button onclick="toggleLanguage()" class="flex items-center space-x-1 text-gray-700 hover:text-primary">
 <span id="currentLang">EN</span>
@@ -280,6 +373,14 @@ a, button {
 </div>
 </nav>
 </header>
+<div class="bg-secondary/90 text-white py-2 text-center shadow-md fixed top-[60px] w-full z-40 hidden md:block">
+  <div class="container mx-auto px-6">
+    <p class="text-sm">
+      <span class="font-bold">📱 Free Phone Check-up Available!</span> 
+      <span class="ml-2">Click "Free Checking" button to get started via WhatsApp.</span>
+    </p>
+  </div>
+</div>
 <div class="mobile-menu hidden fixed top-16 left-0 right-0 bottom-0 bg-white shadow-lg z-40 md:hidden overflow-y-auto">
 <div class="container mx-auto px-6 py-4">
 <div class="flex flex-col space-y-6">
@@ -305,9 +406,9 @@ a, button {
 <i class="ri-map-pin-line mr-3 text-xl"></i>
 <span>Contact</span>
 </a>
-<button class="bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 flex items-center justify-center" onclick="window.location.href='tel:019-288 8012'">
-<i class="ri-phone-line mr-2"></i>
-Call Us Now
+<button class="bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 flex items-center justify-center shadow-md transition-all duration-300" onclick="openWhatsAppWithMessage()">
+<i class="ri-whatsapp-line mr-2"></i>
+<span data-translate="freeChecking">Free Checking</span>
 </button>
 <div class="flex flex-col space-y-4 pt-4 border-t">
 <div class="text-lg font-semibold text-gray-900">Language</div>
@@ -344,7 +445,7 @@ Call Us Now
 <h1 class="text-5xl font-bold text-gray-900 mb-6" data-translate="heroTitle">Professional Phone Repair Services</h1>
 <p class="text-xl text-gray-700 mb-8" data-translate="heroDesc">Expert repairs with free diagnosis. Get your device fixed by experienced technicians with proven track record.</p>
 <div class="flex items-center space-x-6 mb-8">
-<button class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90 text-lg" onclick="openBookingModal()" data-translate="freeChecking">Free Checking</button>
+<button class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90 text-lg shadow-lg transition-all duration-300" onclick="openWhatsAppWithMessage()" data-translate="freeChecking">Free Checking</button>
 <div class="flex items-center space-x-2">
 <i class="ri-phone-fill text-2xl text-primary"></i>
 <span class="text-lg font-semibold text-gray-900">019-288 8012</span>
@@ -1195,15 +1296,17 @@ body.style.overflow = '';
 }
 }
 function openBookingModal() {
-document.getElementById('bookingModal').classList.remove('hidden');
+  // 现在这个函数将使用WhatsApp预设信息
+  openWhatsAppWithMessage();
 }
 function closeBookingModal() {
-document.getElementById('bookingModal').classList.add('hidden');
+  document.getElementById('bookingModal').classList.add('hidden');
 }
+// 让表单继续工作，以防未来需要恢复表单功能
 document.getElementById('bookingForm').addEventListener('submit', function(e) {
-e.preventDefault();
-closeBookingModal();
-showSuccessMessage();
+  e.preventDefault();
+  closeBookingModal();
+  showSuccessMessage();
 });
 const backToTopButton = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
@@ -1261,6 +1364,21 @@ submitButtons.forEach(button => {
     this.style.transform = 'scale(1)';
   });
 });
+
+// 添加一个新函数用于打开WhatsApp并附带预设信息
+function openWhatsAppWithMessage() {
+  // 构建预设信息文本
+  let presetMessage = "Hi! I'm interested in your Free Checking service. Could you please provide more information?";
+  
+  // 如果当前语言是马来语，则使用马来语消息
+  if (currentLang === 'my') {
+    presetMessage = "Hai! Saya berminat dengan perkhidmatan Pemeriksaan Percuma anda. Bolehkah anda berikan maklumat lanjut?";
+  }
+  
+  // 构建WhatsApp链接并打开
+  const whatsappLink = `https://wa.me/+60192888012?text=${encodeURIComponent(presetMessage)}`;
+  window.location.href = whatsappLink;
+}
 </script>
 </body>
 </html>
