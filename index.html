@@ -40,7 +40,7 @@ DEFAULT: '8px',
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 <style>
 /* 通用样式 */
@@ -339,45 +339,460 @@ a, button {
     padding-top: 92px; /* 60px导航栏 + 32px横幅 */
   }
 }
+
+/* 添加新的全局样式 */
+:root {
+  /* 更新配色方案 */
+  --primary-color: #2563eb;    /* 更现代的蓝色 */
+  --secondary-color: #f97316;  /* 保留原橙色但调整饱和度 */
+  --accent-color: #6366f1;     /* 添加点缀色 */
+  --background-light: #f8fafc; /* 更柔和的背景色 */
+  --text-primary: #1e293b;     /* 更柔和的主文本色 */
+  --text-secondary: #64748b;   /* 次要文本色 */
+  
+  /* 添加圆角变量 */
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 1rem;
+  --border-radius-lg: 1.5rem;
+  
+  /* 添加阴影变量 */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* 更新全局动画效果 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* 更新服务卡片样式 */
+.service-card {
+  @apply bg-gradient-to-br from-white to-fuchsia-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300;
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  @apply shadow-xl bg-gradient-to-br from-fuchsia-50 to-white;
+}
+
+.service-icon {
+  @apply w-16 h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 text-purple-600 mb-4;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  @apply bg-gradient-to-br from-pink-500 to-purple-500 text-white transform scale-110;
+}
+
+/* 移动端优化 */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+  
+  .hero-section {
+    @apply pt-20 pb-12;
+  }
+  
+  .service-grid {
+    @apply grid-cols-1 gap-4;
+  }
+  
+  .stat-card {
+    @apply p-4;
+  }
+  
+  .nav-menu-mobile {
+    @apply fixed inset-0 bg-white z-50 transform transition-transform duration-300;
+  }
+  
+  .nav-menu-mobile.hidden {
+    transform: translateX(-100%);
+  }
+}
+
+/* 平板端优化 */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .service-grid {
+    @apply grid-cols-2 gap-6;
+  }
+  
+  .hero-section {
+    @apply pt-24;
+  }
+}
+
+/* 现代化按钮样式 */
+.btn-primary {
+  @apply bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white px-6 py-3 rounded-full 
+         hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 transform hover:-translate-y-0.5 
+         transition-all duration-300 shadow-md hover:shadow-lg;
+}
+
+.btn-secondary {
+  @apply bg-white text-primary border-2 border-primary px-6 py-3 
+         rounded-full font-medium hover:bg-primary/5 
+         transition-all duration-300;
+}
+
+/* 现代化卡片样式 */
+.card {
+  @apply bg-white rounded-xl shadow-md hover:shadow-lg 
+         transition-all duration-300 overflow-hidden;
+}
+
+/* 新增动画效果 */
+.hover-scale {
+  @apply transform transition-transform duration-300 hover:scale-105;
+}
+
+/* 添加新的样式 */
+/* 更新全局样式 */
+:root {
+  --primary-bg: #f5f5f5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --accent-color: #2563eb;
+}
+
+/* 更新导航栏样式 */
+.header-new {
+  @apply fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* 更新按钮样式 */
+.btn-modern {
+  @apply bg-black text-white px-8 py-4 rounded-full hover:bg-gray-800 
+         transition-all duration-300 font-medium tracking-wide;
+}
+
+/* 添加图片悬浮效果 */
+.image-hover {
+  transition: transform 0.3s ease;
+}
+
+.image-hover:hover {
+  transform: scale(1.02);
+}
+
+/* 添加装饰性元素动画 */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* 新增现代化样式 */
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* 卡片悬停效果 */
+.hover-card {
+  transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(192, 132, 252, 0.15);
+}
+
+/* 渐变文本 */
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent;
+}
+
+/* 动画效果 */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 现代化按钮样式 */
+.btn-modern {
+  @apply relative overflow-hidden rounded-xl transition-all duration-300;
+}
+
+.btn-modern::after {
+  content: '';
+  @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-300;
+}
+
+.btn-modern:hover::after {
+  @apply opacity-20;
+}
+
+/* 改进的导航链接样式 */
+.nav-link {
+  @apply relative text-gray-600 hover:text-blue-600 transition-colors;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+/* 添加到现有的 style 标签中 */
+/* 优化服务卡片的动画效果 */
+.group {
+  transform: translateY(0);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover {
+  transform: translateY(-8px);
+}
+
+/* 添加卡片内容的渐变效果 */
+.group:hover .group-hover\:bg-blue-500 {
+  background-color: rgb(59, 130, 246);
+  box-shadow: 0 8px 24px -4px rgba(59, 130, 246, 0.2);
+}
+
+/* 优化图标容器的过渡效果 */
+.group:hover .w-16 {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* 添加卡片阴影动画 */
+.shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease;
+}
+
+.hover\:shadow-xl:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* 优化背景渐变过渡效果 */
+.bg-gradient-to-r {
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 更新 main 的 padding-top 以适应新的信息栏高度 */
+@media (min-width: 768px) {
+  main {
+    padding-top: 108px; /* 60px导航栏 + 48px信息栏 */
+  }
+}
+
+/* 添加信息栏的动画效果 */
+.bg-gradient-to-r {
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 更新服务卡片的样式 */
+.service-card {
+  @apply bg-gradient-to-br from-white to-fuchsia-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300;
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  @apply shadow-xl bg-gradient-to-br from-fuchsia-50 to-white;
+}
+
+/* 更新配件部分的背景 */
+#accessories {
+  background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+}
+
+/* 更新服务部分的图标容器 */
+.service-icon {
+  @apply w-16 h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 text-purple-600 mb-4;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  @apply bg-gradient-to-br from-pink-500 to-purple-500 text-white transform scale-110;
+}
+
+/* 更新统计数字的样式 */
+.stats-number {
+  @apply text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent;
+}
+
+/* 更新联系部分的样式 */
+#contact {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+}
+
+/* 更新联系信息卡片的样式 */
+.contact-card {
+  @apply bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  background: linear-gradient(145deg, #ffffff, #f8faff);
+}
+
+/* 更新社交媒体图标的样式 */
+.social-icon {
+  @apply w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300;
+}
+
+/* 更新按钮悬停效果 */
+.btn-primary:hover {
+  @apply transform -translate-y-1 shadow-lg;
+  background: linear-gradient(145deg, #0284c7, #0369a1);
+}
+
+/* 添加装饰性背景图案 */
+.bg-pattern {
+  background-image: radial-gradient(#e0f2fe 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* 更新testimonials部分的样式 */
+.testimonial-card {
+  @apply bg-gradient-to-br from-white to-purple-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  @apply transform -translate-y-1 shadow-xl;
+  background: linear-gradient(145deg, #ffffff, #f0f7ff);
+}
+
+/* 更新服务卡片样式 */
+.group {
+  @apply bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg hover:shadow-xl 
+         transition-all duration-300 hover:-translate-y-2;
+  background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+}
+
+/* 更新配件卡片样式 */
+#accessories .bg-white {
+  @apply backdrop-blur-sm hover:-translate-y-2;
+  background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+}
+
+/* 更新评价卡片样式 */
+.testimonial-slider .bg-white {
+  @apply backdrop-blur-sm;
+  background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+}
+
+/* 更新联系信息卡片样式 */
+#contact .bg-white {
+  @apply backdrop-blur-sm;
+  background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+}
+
+/* 添加微妙的动画效果 */
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.group:hover {
+  animation: subtleFloat 2s ease-in-out infinite;
+}
+
+/* 添加动态渐变背景动画 */
+.bg-gradient-animate {
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 </style>
 </style>
 </head>
 <body class="bg-gray-50">
-<header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
-<nav class="container mx-auto px-6 py-4">
-<div class="flex items-center justify-between">
-<a href="#" class="text-3xl font-['Pacifico'] text-primary">Go Fix Solution</a>
-<div class="hidden md:flex items-center space-x-8">
-<a href="#services" class="text-gray-700 hover:text-primary">Services</a>
-<a href="#accessories" class="text-gray-700 hover:text-primary">Accessories</a>
-<a href="#testimonials" class="text-gray-700 hover:text-primary">Testimonials</a>
-<a href="#contact" class="text-gray-700 hover:text-primary">Contact</a>
-<!-- 修改后的 Call Us Now 按钮 -->
-<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90" onclick="window.location.href='https://wa.me/+60192888012'">Call Us Now</button>
-<div class="relative">
-<button onclick="toggleLanguage()" class="flex items-center space-x-1 text-gray-700 hover:text-primary">
-<span id="currentLang">EN</span>
-<i class="ri-arrow-down-s-line"></i>
-</button>
-<div id="languageMenu" class="hidden absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg py-2 w-24">
-<button onclick="changeLang('en')" class="w-full px-4 py-2 text-left hover:bg-gray-100">English</button>
-<button onclick="changeLang('my')" class="w-full px-4 py-2 text-left hover:bg-gray-100">Bahasa</button>
-</div>
-</div>
-</div>
-<div class="md:hidden flex items-center">
-<button class="text-gray-700 p-2" onclick="toggleMobileMenu()">
-<i class="ri-menu-line text-2xl"></i>
-</button>
-</div>
-</div>
-</nav>
+<header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-lg shadow-sm z-50">
+  <nav class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="#" class="flex items-center space-x-2">
+        <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+          Go Fix Solution
+        </span>
+      </a>
+
+      <!-- 桌面端导航 -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#services" class="text-gray-600 hover:text-blue-600 transition-colors">Services</a>
+        <a href="#accessories" class="text-gray-600 hover:text-blue-600 transition-colors">Accessories</a>
+        <a href="#testimonials" class="text-gray-600 hover:text-blue-600 transition-colors">Testimonials</a>
+        <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+        <button onclick="openWhatsAppWithMessage()" 
+                class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white px-5 py-2 rounded-lg hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 transition-all duration-300 flex items-center space-x-2 shadow-md hover:shadow-purple-200 text-sm">
+          <i class="ri-whatsapp-line"></i>
+          <span>Free Checking</span>
+        </button>
+        <div class="relative">
+          <button onclick="toggleLanguageMenu()" class="flex items-center space-x-2 text-gray-600 hover:text-blue-600">
+            <span id="currentLang">EN</span>
+            <i class="ri-arrow-down-s-line"></i>
+          </button>
+          <div id="languageMenu" class="absolute right-0 mt-2 py-2 w-32 bg-white rounded-lg shadow-xl hidden">
+            <button onclick="changeLang('en')" class="w-full px-4 py-2 text-left hover:bg-gray-100">
+              English
+            </button>
+            <button onclick="changeLang('my')" class="w-full px-4 py-2 text-left hover:bg-gray-100">
+              Bahasa Melayu
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 </header>
-<div class="bg-secondary/90 text-white py-2 text-center shadow-md fixed top-[60px] w-full z-40 hidden md:block">
+<!-- 修改信息栏样式，优化内边距和文字对齐 -->
+<div class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white py-2.5 text-center shadow-md fixed top-[60px] w-full z-40 hidden md:block">
   <div class="container mx-auto px-6">
-    <p class="text-sm">
-      <span class="font-bold">📱 Free Phone Check-up Available!</span> 
-      <span class="ml-2">Click "Free Checking" button to get started via WhatsApp.</span>
+    <p class="text-sm flex items-center justify-center space-x-3 leading-none">
+      <span class="inline-flex items-center">
+        <i class="ri-smartphone-line text-xl mr-2"></i>
+        <span class="font-bold text-base leading-none">Free Phone Check-up Available!</span>
+      </span>
+      <span class="hidden sm:inline text-white/90">|</span>
+      <span class="text-white text-base leading-none">
+        Click "Free Checking" button to get started via WhatsApp
+      </span>
     </p>
   </div>
 </div>
@@ -438,142 +853,179 @@ a, button {
 </div>
 </div>
 <main>
-<section class="hero-section relative h-[600px] md:h-[600px] bg-cover bg-center" style="background-image: url('https://public.readdy.ai/ai/img_res/eb3da73c98c860277537162bc5ca1463.jpg')">
-<div class="absolute inset-0 bg-gradient-to-r from-white/90 to-white/30"></div>
-<div class="container mx-auto px-6 h-full flex items-center relative">
-<div class="max-w-2xl">
-<h1 class="text-5xl font-bold text-gray-900 mb-6" data-translate="heroTitle">Professional Phone Repair Services</h1>
-<p class="text-xl text-gray-700 mb-8" data-translate="heroDesc">Expert repairs with free diagnosis. Get your device fixed by experienced technicians with proven track record.</p>
-<div class="flex items-center space-x-6 mb-8">
-<button class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90 text-lg shadow-lg transition-all duration-300" onclick="openWhatsAppWithMessage()" data-translate="freeChecking">Free Checking</button>
-<div class="flex items-center space-x-2">
-<i class="ri-phone-fill text-2xl text-primary"></i>
-<span class="text-lg font-semibold text-gray-900">019-288 8012</span>
-</div>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-<div class="text-center">
-<div class="text-3xl font-bold text-gray-900 mb-2">10+</div>
-<div class="text-gray-600" data-translate="yearsExp">Years Experience</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-bold text-gray-900 mb-2">20,000+</div>
-<div class="text-gray-600" data-translate="satisfiedCustomers">Satisfied Customers</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-bold text-gray-900 mb-2">25,000+</div>
-<div class="text-gray-600" data-translate="repairedDevices">Repaired Devices</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="services" class="py-20 bg-white">
-<div class="container mx-auto px-6">
-<h2 class="text-3xl font-bold text-center text-gray-900 mb-12" data-translate="ourServices">Our Services</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-smartphone-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4">Screen Repair</h3>
-<p class="text-gray-600" data-translate="screenRepairDesc">Professional LCD replacement service with genuine parts and warranty coverage.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-battery-2-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="batteryReplacement">Battery Replacement</h3>
-<p class="text-gray-600" data-translate="batteryDesc">Restore your phone's battery life with high-quality replacement batteries.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-water-flash-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="waterDamage">Water Damage Repair</h3>
-<p class="text-gray-600" data-translate="waterDamageDesc">Specialized treatment for water-damaged devices with high success rate.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-camera-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="cameraRepair">Camera Repair</h3>
-<p class="text-gray-600" data-translate="cameraRepairDesc">Expert camera module replacement and repair for crystal clear photos.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-volume-up-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="speakerRepair">Speaker Repair</h3>
-<p class="text-gray-600" data-translate="speakerRepairDesc">Fix audio issues with professional speaker and microphone repairs.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-code-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="softwareSolutions">Software Solutions</h3>
-<p class="text-gray-600" data-translate="softwareDesc">System updates, data recovery, and software troubleshooting services.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-settings-5-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="formatPhone">Format Phone</h3>
-<p class="text-gray-600" data-translate="formatPhoneDesc">Professional phone formatting service to restore your device to factory settings.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-lock-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="phoneLock">Phone Lock</h3>
-<p class="text-gray-600" data-translate="phoneLockDesc">Unlock your phone or fix lock-related issues with our expert services.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-toggle-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="buttonProblem">Button On/Off & Volume Problem</h3>
-<p class="text-gray-600" data-translate="buttonProblemDesc">Fix issues with power buttons, volume buttons, and other hardware problems.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-battery-charge-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="chargingBoard">Charging Board</h3>
-<p class="text-gray-600" data-translate="chargingBoardDesc">Repair or replace faulty charging boards to restore charging functionality.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-plug-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="pinCharge">Pin Charge</h3>
-<p class="text-gray-600" data-translate="pinChargeDesc">Fix issues with charging pins and connectors for reliable charging.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-glass-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="backglassBroken">Backglass Broken</h3>
-<p class="text-gray-600" data-translate="backglassBrokenDesc">Replace broken back glass to restore your phone's appearance and protection.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-<i class="ri-signal-wifi-line text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="lineProblem">Line Problem</h3>
-<p class="text-gray-600" data-translate="lineProblemDesc">Fix network and signal issues for better connectivity.</p>
-</div>
-<div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-  <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
-      <i class="ri-cpu-line text-2xl text-primary"></i>
+<section class="relative pt-32 pb-20 overflow-hidden">
+  <!-- 背景图片和渐变叠加 -->
+  <div class="absolute inset-0">
+    <img src="images/Main.jpg" 
+         alt="Phone Repair Background" 
+         class="w-full h-full object-cover"
+         loading="lazy">
+    <!-- 优化渐变叠加效果 -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
   </div>
-  <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="motherboardRepair">Motherboard Repair</h3>
-  <p class="text-gray-600" data-translate="motherboardRepairDesc">Expert repair and replacement of damaged motherboards to restore full functionality.</p>
-</div>
+  
+  <div class="container mx-auto px-6 relative z-10">
+    <!-- 将内容改为单列全宽布局 -->
+    <div class="max-w-3xl mx-auto text-center space-y-8">
+      <div class="inline-flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
+        <span class="animate-pulse w-2 h-2 rounded-full bg-blue-400"></span>
+        <span class="text-white font-medium">Professional Repair Service</span>
+      </div>
+      
+      <h1 class="text-5xl md:text-6xl font-bold leading-tight text-white">
+        Expert Phone
+        <span class="bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">
+          Repair Solutions
+        </span>
+      </h1>
+      
+      <p class="text-xl text-gray-200 max-w-xl">
+        Professional diagnosis and repair services with guaranteed satisfaction. Get your device fixed by experienced technicians.
+      </p>
+      
+      <div class="flex flex-wrap gap-4">
+        <button onclick="openWhatsAppWithMessage()" 
+                class="group bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white px-8 py-4 rounded-xl hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 
+                       transition-all duration-300 flex items-center space-x-3 shadow-xl hover:shadow-purple-200">
+          <i class="ri-whatsapp-line text-xl"></i>
+          <span>Free Checking</span>
+          <i class="ri-arrow-right-line text-xl group-hover:translate-x-1 transition-transform"></i>
+        </button>
+        
+        <a href="#services" 
+           class="inline-flex items-center space-x-2 px-8 py-4 border-2 border-white/30 text-white
+                  rounded-xl hover:border-blue-400 hover:bg-white/10 transition-all duration-300">
+          <span>View Services</span>
+          <i class="ri-arrow-down-line"></i>
+        </a>
+      </div>
+      
+      <!-- 统计数据 - 更新颜色 -->
+      <div class="grid grid-cols-3 gap-8 pt-8">
+        <div class="text-center">
+          <div class="text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">10+</div>
+          <div class="text-gray-300">Years Experience</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">10000+</div>
+          <div class="text-gray-300">Repairs Done</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">99%</div>
+          <div class="text-gray-300">Success Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="services" class="py-20 bg-gradient-to-b from-fuchsia-50 to-indigo-50">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">Our Services</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+  <div class="group bg-gradient-to-br from-white to-purple-50 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+    <div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-pink-100 to-purple-200 rounded-xl mb-6 group-hover:from-pink-500 group-hover:to-purple-500 transition-colors">
+      <i class="ri-smartphone-line text-2xl text-purple-500 group-hover:text-white transition-colors"></i>
+    </div>
+    <h3 class="text-xl font-semibold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-4">Screen Repair</h3>
+    <p class="text-gray-600 group-hover:text-gray-700 transition-colors">
+      Professional LCD replacement service with genuine parts and warranty coverage.
+    </p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-battery-2-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="batteryReplacement">Battery Replacement</h3>
+    <p class="text-gray-600" data-translate="batteryDesc">Restore your phone's battery life with high-quality replacement batteries.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-water-flash-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="waterDamage">Water Damage Repair</h3>
+    <p class="text-gray-600" data-translate="waterDamageDesc">Specialized treatment for water-damaged devices with high success rate.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-camera-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="cameraRepair">Camera Repair</h3>
+    <p class="text-gray-600" data-translate="cameraRepairDesc">Expert camera module replacement and repair for crystal clear photos.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-volume-up-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="speakerRepair">Speaker Repair</h3>
+    <p class="text-gray-600" data-translate="speakerRepairDesc">Fix audio issues with professional speaker and microphone repairs.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-code-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="softwareSolutions">Software Solutions</h3>
+    <p class="text-gray-600" data-translate="softwareDesc">System updates, data recovery, and software troubleshooting services.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-settings-5-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="formatPhone">Format Phone</h3>
+    <p class="text-gray-600" data-translate="formatPhoneDesc">Professional phone formatting service to restore your device to factory settings.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-lock-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="phoneLock">Phone Lock</h3>
+    <p class="text-gray-600" data-translate="phoneLockDesc">Unlock your phone or fix lock-related issues with our expert services.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-toggle-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="buttonProblem">Button On/Off & Volume Problem</h3>
+    <p class="text-gray-600" data-translate="buttonProblemDesc">Fix issues with power buttons, volume buttons, and other hardware problems.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-battery-charge-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="chargingBoard">Charging Board</h3>
+    <p class="text-gray-600" data-translate="chargingBoardDesc">Repair or replace faulty charging boards to restore charging functionality.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-plug-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="pinCharge">Pin Charge</h3>
+    <p class="text-gray-600" data-translate="pinChargeDesc">Fix issues with charging pins and connectors for reliable charging.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-glass-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="backglassBroken">Backglass Broken</h3>
+    <p class="text-gray-600" data-translate="backglassBrokenDesc">Replace broken back glass to restore your phone's appearance and protection.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-signal-wifi-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="lineProblem">Line Problem</h3>
+    <p class="text-gray-600" data-translate="lineProblemDesc">Fix network and signal issues for better connectivity.</p>
+  </div>
+  <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+      <i class="ri-cpu-line text-2xl text-primary"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-translate="motherboardRepair">Motherboard Repair</h3>
+    <p class="text-gray-600" data-translate="motherboardRepairDesc">Expert repair and replacement of damaged motherboards to restore full functionality.</p>
+  </div>
 </div>
 </div>
 </section>
-<section id="accessories" class="py-20 bg-gray-50">
+<section id="accessories" class="py-20 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
 <div class="container mx-auto px-6">
 <h2 class="text-3xl font-bold text-center text-gray-900 mb-12" data-translate="accessories">Accessories</h2>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -629,7 +1081,7 @@ a, button {
 </div>
 </div>
 </section>
-<section id="testimonials" class="py-20 bg-white">
+<section id="testimonials" class="py-20 bg-gradient-to-b from-indigo-50 to-fuchsia-50">
 <div class="container mx-auto px-6 max-w-7xl">
 <h2 class="text-3xl font-bold text-center text-gray-900 mb-12" data-translate="customerSay">What Our Customers Say</h2>
 <div class="relative">
@@ -641,7 +1093,7 @@ a, button {
 <img src="https://public.readdy.ai/ai/img_res/176239a8b7a5883f1f0205a04862af8e.jpg" class="w-12 h-12 rounded-full" alt="Customer 1">
 <div class="ml-4">
 <h4 class="font-semibold text-gray-900">Nurul Aisyah</h4>
-<div class="flex text-yellow-400">
+<div class="flex text-transparent bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text">
 <i class="ri-star-fill"></i>
 <i class="ri-star-fill"></i>
 <i class="ri-star-fill"></i>
@@ -659,7 +1111,7 @@ a, button {
 <img src="https://public.readdy.ai/ai/img_res/f28f5e18ed63826df841b9e7ceb44915.jpg" class="w-12 h-12 rounded-full" alt="Customer 2">
 <div class="ml-4">
 <h4 class="font-semibold text-gray-900">Ahmad Faiz</h4>
-<div class="flex text-yellow-400">
+<div class="flex text-transparent bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text">
 <i class="ri-star-fill"></i>
 <i class="ri-star-fill"></i>
 <i class="ri-star-fill"></i>
@@ -677,7 +1129,7 @@ a, button {
 <img src="https://public.readdy.ai/ai/img_res/1007fa9d5445bd4e99ee1f683e51fc5e.jpg" class="w-12 h-12 rounded-full" alt="Customer 3">
 <div class="ml-4">
 <h4 class="font-semibold text-gray-900">Sarah Tan</h4>
-<div class="flex text-yellow-400">
+<div class="flex text-transparent bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text">
 <i class="ri-star-fill"></i>
 <i class="ri-star-fill"></i>
 <i class="ri-star-fill"></i>
@@ -705,7 +1157,7 @@ a, button {
 </div>
 </div>
 </section>
-<section id="contact" class="py-20 bg-gray-50">
+<section id="contact" class="py-20 bg-gradient-to-br from-indigo-50 via-white to-blue-50">
   <div class="container mx-auto px-6">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
       <!-- Visit Our Store Section -->
@@ -983,7 +1435,10 @@ temperedGlass: "Tempered Glass",
 temperedGlassDesc: "Durable tempered glass screen protectors for your devices.",
 casingPhone: "Casing Phone",
 casingPhoneDesc: "Stylish and protective phone cases for various models.",
-swipeForMore: "Swipe to see more reviews"
+swipeForMore: "Swipe to see more reviews",
+professionalTools: "Professional Tools",
+usingAdvancedTools: "Using advanced repair equipment for precise repairs",
+languageSelect: "Select Language"
 },
 my: {
 services: "Perkhidmatan",
@@ -1059,7 +1514,10 @@ temperedGlass: "Kaca Tempered",
 temperedGlassDesc: "Pelindung skrin kaca tempered yang tahan lama untuk peranti anda.",
 casingPhone: "Casing Telefon",
 casingPhoneDesc: "Casing telefon yang bergaya dan melindungi untuk pelbagai model.",
-swipeForMore: "Leret untuk melihat lebih banyak ulasan"
+swipeForMore: "Leret untuk melihat lebih banyak ulasan",
+professionalTools: "Peralatan Profesional",
+usingAdvancedTools: "Menggunakan peralatan pembaikan termaju untuk pembaikan yang tepat",
+languageSelect: "Pilih Bahasa"
 }
 };
 let currentLang = 'en';
@@ -1087,7 +1545,7 @@ element.textContent = translations[currentLang][key];
 // Close language menu when clicking outside
 document.addEventListener('click', (e) => {
 const menu = document.getElementById('languageMenu');
-const langButton = document.querySelector('[onclick="toggleLanguage()"]');
+const langButton = document.querySelector('[onclick="toggleLanguageMenu()"]');
 if (!menu.contains(e.target) && !langButton.contains(e.target)) {
 menu.classList.add('hidden');
 }
@@ -1316,6 +1774,36 @@ function openWhatsAppWithMessage() {
   // 构建WhatsApp链接并打开
   const whatsappLink = `https://wa.me/+60192888012?text=${encodeURIComponent(presetMessage)}`;
   window.location.href = whatsappLink;
+}
+
+// 添加语言菜单切换函数
+function toggleLanguageMenu() {
+  const menu = document.getElementById('languageMenu');
+  menu.classList.toggle('hidden');
+}
+
+// 点击其他地方时关闭语言菜单
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('languageMenu');
+  const langButton = document.querySelector('[onclick="toggleLanguageMenu()"]');
+  if (!menu.contains(e.target) && !langButton.contains(e.target)) {
+    menu.classList.add('hidden');
+  }
+});
+
+// 更新语言切换函数
+function changeLang(lang) {
+  currentLang = lang;
+  document.getElementById('currentLang').textContent = lang.toUpperCase();
+  document.getElementById('languageMenu').classList.add('hidden');
+  
+  // 更新所有可翻译元素
+  document.querySelectorAll('[data-translate]').forEach(element => {
+    const key = element.getAttribute('data-translate');
+    if (translations[currentLang][key]) {
+      element.textContent = translations[currentLang][key];
+    }
+  });
 }
 </script>
 </body>
