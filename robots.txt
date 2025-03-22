@@ -1,0 +1,22 @@
+# 📌 网站地图（Google 优先读取）
+Sitemap: https://www.gofixsolution.com.my/sitemap.xml
+
+# 允许所有搜索引擎爬虫访问
+User-agent: *
+Allow: /
+
+# 禁止爬虫访问某些不必要的文件类型（但允许 CSS & JS）
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /assets/
+
+Allow: /*.css$
+Allow: /*.js$
+
+# 允许 Google 图片索引
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
