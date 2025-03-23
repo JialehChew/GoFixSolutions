@@ -5,18 +5,15 @@ Sitemap: https://www.gofixsolution.com.my/sitemap.xml
 User-agent: *
 Allow: /
 
-# 禁止爬虫访问某些不必要的文件类型（但允许 CSS & JS）
+# 禁止爬虫访问 JSON 文件（防止索引 API 数据）
 Disallow: /*.json$
-Disallow: /*.xml$
-Disallow: /assets/
 
+# 确保 Sitemap 可访问
+Allow: /sitemap.xml
+
+# 允许 CSS 和 JS 访问（确保 Google 正确渲染）
 Allow: /*.css$
 Allow: /*.js$
 
-# 允许 Google 图片索引
-User-agent: Googlebot-Image
+# 允许搜索引擎索引图片
 Allow: /images/
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.png$
-Allow: /*.webp$
